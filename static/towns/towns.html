@@ -17,9 +17,9 @@
 
 {% block main %}
     <h1>
-        <a href="town/Шард" class="text-white">Шард</a><br>
-        <a href="town/Ичусека" class="text-white">Ичусека</a><br>
-        <a href="town/Флидбург" class="text-white">Флидбург</a><br>
+        <a href="{% url 'towns:search_by_town' 'Шард' %}" class="text-white">Шард</a><br>
+        <a href="{% url 'towns:search_by_town' 'Ичусека' %}" class="text-white">Ичусека</a><br>
+        <a href="{% url 'towns:search_by_town' 'Флидбург' %}" class="text-white">Флидбург</a><br>
     </h1>
 {% endblock main %}
 
