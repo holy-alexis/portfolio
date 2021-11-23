@@ -30,10 +30,14 @@ class RatePage(generic.ListView):
         date = self.kwargs["date"]
         buy_sum = 0
         sell_sum = 0
-        for i in cur.execute(f'''SELECT * FROM "{date}"'''):
-            rates["rates"].append(i)
-            buy_sum += float(i[1].replace(" ", ""))
-            sell_sum += float(i[2].replace(" ", ""))
+        try:
+            for i in cur.execute(f'''SELECT * FROM "{date}"'''):
+                rates["rates"].append(i)
+                buy_sum += float(i[1].replace(" ", ""))
+                sell_sum += float(i[2].replace(" ", ""))
+        except sqlite3.OperationalError:
+            con.close()
+            return None
         con.close()
         x = str(round(buy_sum / 12, 2))
         y = str(round(sell_sum / 12, 2))

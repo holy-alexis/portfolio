@@ -16,27 +16,31 @@
 
 {% block main %}
   <br>
-  <a>Average Purchase rate: {{ rates.average_buy }}</a>
-  <br>
-  <a>Average Selling rate: {{ rates.average_sell }}</a>
-  <table cellpadding="5" border="1">
-    <thead>
-      <tr>
-        <th>Ingot denomination, gram</th>
-        <th>Purchase rate, UAH / 1 gr.</th>
-        <th>Selling rate, UAH / 1 gr.</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for w,b,s in rates.rates %}
-      <tr>
-        <td>{{ w }}</td>
-        <td>{{ b }}</td>
-        <td>{{ s }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  {% if rates %}
+    <a>Average Purchase rate: {{ rates.average_buy }}</a>
+    <br>
+    <a>Average Selling rate: {{ rates.average_sell }}</a>
+    <table cellpadding="5" border="1">
+      <thead>
+        <tr>
+          <th>Ingot denomination, gram</th>
+          <th>Purchase rate, UAH / 1 gr.</th>
+          <th>Selling rate, UAH / 1 gr.</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for w,b,s in rates.rates %}
+        <tr>
+          <td>{{ w }}</td>
+          <td>{{ b }}</td>
+          <td>{{ s }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Data doesn't exist</p>
+  {% endif %}
 {% endblock main %}
 
 {% block footer %}

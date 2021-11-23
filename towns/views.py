@@ -59,3 +59,10 @@ class SearchByTown(generic.ListView):
 class PersonView(generic.DetailView):
     model = People
     template_name = 'towns/person.html'
+
+    def get_object(self):
+        people = self.model.objects.filter(pk=self.kwargs["pk"])
+        if len(people) != 0:
+            return people.get()
+        else:
+            return None

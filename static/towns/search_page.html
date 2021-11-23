@@ -34,12 +34,14 @@
         if (name == "") {
             alert("Search box can't be empty!");
         } else {
-            window.location.href = "people/" + name;
+            let url = "{% url 'towns:search_by_people' ' ' %}"
+            url = url.substring(0, url.length - 4)
+            window.location.href = url + name;
         }
         
     }
     function search2() {
-        window.location.href = "towns";
+        window.location.href = "{% url 'towns:towns_list' %}";
     }
 </script>
 {% endblock scripts %}
