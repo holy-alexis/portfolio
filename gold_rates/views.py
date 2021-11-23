@@ -3,11 +3,10 @@ import sqlite3
 
 
 class IndexPage(generic.TemplateView):
-    template_name = "gold_rates_index.html"
-
+    template_name = "gold_rates/gold_rates_index.html"
 
 class DatesPage(generic.ListView):
-    template_name = "gold_rates_dates.html"
+    template_name = "gold_rates/gold_rates_dates.html"
     context_object_name = "dates"
 
     def get_queryset(self):
@@ -21,7 +20,7 @@ class DatesPage(generic.ListView):
 
 
 class RatePage(generic.ListView):
-    template_name = "gold_rate.html"
+    template_name = "gold_rates/gold_rate.html"
     context_object_name = "rates"
 
     def get_queryset(self):

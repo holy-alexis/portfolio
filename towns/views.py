@@ -3,11 +3,11 @@ from towns.models import People, Town
 
 
 class IndexPage(generic.TemplateView):
-    template_name = 'towns_index.html'
+    template_name = 'towns/towns_index.html'
 
 
 class SearchPage(generic.TemplateView):
-    template_name = 'search_page.html'
+    template_name = 'towns/search_page.html'
 
 
 def get_ids(ids, str_to_search):
@@ -39,7 +39,7 @@ class SearchByPeople(generic.ListView):
 
 
 class TownsList(generic.TemplateView):
-    template_name = 'towns.html'
+    template_name = 'towns/towns.html'
 
 
 class SearchByTown(generic.ListView):

@@ -4,9 +4,9 @@ from django.views import generic
 
 
 class IndexPage(generic.TemplateView):
-    template_name = "pc_info_index.html"
+    template_name = "pc_info/pc_info_index.html"
 
 
 class Receive(generic.View):
-    def get(self):
+    def get(self, request):
         return HttpResponse(Get_PC_Info())
