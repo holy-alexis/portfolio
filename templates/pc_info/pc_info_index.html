@@ -1,6 +1,11 @@
-{% extends "template/template.html" %}
+{% extends "base.html" %}
+
+{% block links %}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
+{% endblock links %}
 
 {% block header %}
+  
   <div>
     <h3 class="float-md-start mb-0">PC_Info</h3>
     <nav class="nav nav-masthead justify-content-center float-md-end">
@@ -16,11 +21,12 @@
 {% endblock header %}
 
 {% block main %}
+  <br>
+  <p>This page collects information from the server that runs this site, not your machine</p>
   <div id="res"></div>
 {% endblock main %}
 
 {% block scripts %}
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
   <script>
       function sleep(ms) {
           return new Promise(resolve => setTimeout(resolve, ms));
@@ -32,7 +38,7 @@
       async function xD() {
           while (true) {
               $.ajax({
-              url: "receive/",
+              url: "{% url 'pc_info:receive' %}",
               success : function(data) {
                   document.getElementById("res").innerHTML = data;
               },

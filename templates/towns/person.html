@@ -1,4 +1,4 @@
-{% extends "template/template.html" %}
+{% extends "base.html" %}
 
 {% block header %}
   <div>
@@ -17,10 +17,10 @@
 
 {% block main %}
   {% if people %}
-    <p>Name: {{ people.name }}</p>
-    <p>Surname: {{ people.surname }}</p>
-    <p>Age: {{ people.age }}</p>
-    <p>Town: {{ people.town.town_name }}</p>
+    <p>Name: {{ people.name|default:"---" }}</p>
+    <p>Surname: {{ people.surname|default:"---" }}</p>
+    <p>Age: {{ people.age|default:"---" }}</p>
+    <p>Town: {{ people.town.town_name|default:"---" }}</p>
   {% else %}
     <p>People doesn't exist</p>
   {% endif %}

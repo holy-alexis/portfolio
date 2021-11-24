@@ -1,4 +1,5 @@
-{% extends "template/template.html" %}
+{% extends "base.html" %}
+
 {% block header %}
   <div>
     <h3 class="float-md-start mb-0">Gold Rates</h3>
@@ -29,11 +30,11 @@
         </tr>
       </thead>
       <tbody>
-        {% for w,b,s in rates.rates %}
+        {% for weight, buy, sell in rates.rates %}
         <tr>
-          <td>{{ w }}</td>
-          <td>{{ b }}</td>
-          <td>{{ s }}</td>
+          <td>{{ weight }}</td>
+          <td>{{ buy }}</td>
+          <td>{{ sell }}</td>
         </tr>
         {% endfor %}
       </tbody>
