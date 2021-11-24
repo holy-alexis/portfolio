@@ -17,7 +17,6 @@
 
 {% block main %}
   {% if people %}
-    <!-- add |default:"" -->
     <p>Name: {{ people.name|default:"---" }}</p>
     <p>Surname: {{ people.surname|default:"---" }}</p>
     <p>Age: {{ people.age|default:"---" }}</p>

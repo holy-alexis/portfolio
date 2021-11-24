@@ -12,7 +12,6 @@ def get_size(bytes, suffix="B"):
 
 
 def Get_PC_Info():
-    # remove +=
     uname = platform.uname()
     boot_time_timestamp = psutil.boot_time()
     bt = datetime.fromtimestamp(boot_time_timestamp)

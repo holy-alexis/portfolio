@@ -24,7 +24,6 @@ class RatePage(generic.ListView):
     context_object_name = "rates"
 
     def get_queryset(self):
-        # change to with
         with sqlite3.connect("/root/.suka/python/parser/gold.db") as con:
             cur = con.cursor()
             rates = {"rates": [], "average_buy": "", "average_sell": ""}
