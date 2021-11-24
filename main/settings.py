@@ -12,21 +12,20 @@ mimetypes.add_type("text/css", ".css", True)
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = '123'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["5.189.189.117", "items2gamers.shop"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'weather_bot',
-    'polls',
     'towns',
-    'xDD',
+    'main',
     'pc_info',
     'gold_rates',
     'django.contrib.admin',
@@ -47,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'xDD.urls'
+ROOT_URLCONF = 'main.urls'
 
 TEMPLATES = [
     {
@@ -65,7 +64,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'xDD.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 
 # Database
