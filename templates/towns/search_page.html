@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div>
+      <h3 class="float-md-start mb-0">Towns</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'towns:index' %}">Towns</a>
+        <a class="nav-link" href="{% url 'pc_info:index' %}">PC_Info</a>
+        <a class="nav-link" href="{% url 'weather_bot:index' %}">Weather Bot</a>
+        <a class="nav-link" href="{% url 'gold:index' %}">Gold Rates</a>
+        <a class="nav-link" href="{% url 'git' %}">GitHub</a>
+        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+      </nav>
+    </div>
+{% endblock header %}
+
+{% block main %}
+    <input id="elem" type="text" name="name" placeholder="Name">
+    <a class="btn btn-secondary fw-bold border-white bg-white text-dark" onclick="search1()">Search</a>
+    <br><br><br><br>
+    <a class="btn btn-lg btn-secondary fw-bold border-white bg-white text-dark" onclick="search2()">Towns list</a>
+  </main>
+{% endblock main %}
+
+{% block footer %}
+  <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+{% endblock footer %}
+
+{% block scripts %}
+<script>
+    function search1() {
+        let name = document.getElementById("elem").value;
+        if (name == "") {
+            alert("Search box can't be empty!");
+        } else {
+            let url = "{% url 'towns:search_by_people' ' ' %}"
+            url = url.substring(0, url.length - 4)
+            window.location.href = url + name;
+        }
+        
+    }
+    function search2() {
+        window.location.href = "{% url 'towns:towns_list' %}";
+    }
+</script>
+{% endblock scripts %}

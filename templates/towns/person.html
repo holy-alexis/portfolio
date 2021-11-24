@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <div>
+    <h3 class="float-md-start mb-0">Towns</h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+      <a class="nav-link" href="{% url 'index' %}">Home</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'towns:index' %}">Towns</a>
+      <a class="nav-link" href="{% url 'pc_info:index' %}">PC_Info</a>
+      <a class="nav-link" href="{% url 'weather_bot:index' %}">Weather Bot</a>
+      <a class="nav-link" href="{% url 'gold:index' %}">Gold Rates</a>
+      <a class="nav-link" href="{% url 'git' %}">GitHub</a>
+      <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+    </nav>
+  </div>
+{% endblock header %}
+
+{% block main %}
+  {% if people %}
+    <!-- add |default:"" -->
+    <p>Name: {{ people.name|default:"---" }}</p>
+    <p>Surname: {{ people.surname|default:"---" }}</p>
+    <p>Age: {{ people.age|default:"---" }}</p>
+    <p>Town: {{ people.town.town_name|default:"---" }}</p>
+  {% else %}
+    <p>People doesn't exist</p>
+  {% endif %}
+{% endblock main %}
+
+{% block footer %}
+  <p>(All people are fictional, like the country)</p>
+{% endblock footer %}
