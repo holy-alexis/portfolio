@@ -20,15 +20,15 @@ Open console and input next lines: <br>
 > pip3 install -r requirements.txt<br>
 
 In folder "main" in file "setting.py" make sure that user password host port of variable DATABASES set to yours PostgreSQL properties
-(you can use site without it, just comment full variable DATABASES, but page "Towns" won't work properly)
+(you can use site without it, just comment full variable DATABASES, but page "Towns" won't work properly)<br>
 Create database through PostgreSQL console using commang
->CREATE DATABASE towns WITH OWNER postgres ENCODING 'utf-8';
+>CREATE DATABASE towns WITH OWNER postgres ENCODING 'utf-8';<br>
 Note: change "postgres" to your username to PostgreSQL
 
 If you use PostgreSQL make sure to execute make.py, it would load "Towns" data from folder dumps
 
 
-To start server
+To start server<br>
 [WINDOWS]
 > python manage.py runserver
 
@@ -36,8 +36,8 @@ To start server
 > python3 manage.py runserver
 
 
-To access "Admin" page you can use django superuser login & pass
-Just create one using
+To access "Admin" page you can use django superuser login & pass<br>
+Just create one using<br>
 [WINDOWS]
 > python manage.py createsuperuser
 
