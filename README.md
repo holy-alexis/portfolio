@@ -23,6 +23,7 @@ In folder "main" in file "setting.py" make sure that user password host port of 
 (you can use site without it, just comment full variable DATABASES, but page "Towns" won't work properly)<br><br>
 Create database through PostgreSQL console using commang
 >CREATE DATABASE towns WITH OWNER postgres ENCODING 'utf-8';<br>
+
 Note: change "postgres" to your username to PostgreSQL
 <br><br><br>
 If you use PostgreSQL make sure to execute make.py, it would load "Towns" data from folder dumps
