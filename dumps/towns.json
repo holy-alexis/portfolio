@@ -1,0 +1,24 @@
+[
+    {
+      "model": "towns.town",
+      "pk": 1,
+      "fields": {
+        "town_name": "Шард"
+      }
+    },
+    {
+      "model": "towns.town",
+      "pk": 2,
+      "fields": {
+        "town_name": "Флидбург"
+      }
+    },
+    {
+      "model": "towns.town",
+      "pk": 3,
+      "fields": {
+        "town_name": "Ичусека"
+      }
+    }
+    ]
+    

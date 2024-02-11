@@ -1,5 +1,6 @@
 from django.views import generic
 import sqlite3
+from django.core.paginator import Paginator
 
 
 class IndexPage(generic.TemplateView):
@@ -8,15 +9,35 @@ class IndexPage(generic.TemplateView):
 
 class DatesPage(generic.ListView):
     template_name = "gold_rates/gold_rates_dates.html"
-    context_object_name = "dates"
+    context_object_name = "data"
 
     def get_queryset(self):
-        with sqlite3.connect("/root/.suka/python/parser/gold.db") as con:
+        with sqlite3.connect("gold.db") as con:
             cur = con.cursor()
             dates = []
             for i in cur.execute("SELECT * FROM dates"):
                 dates.append(i[0])
-            return dates
+            dates.reverse()
+            p = Paginator(dates, 10)
+            data = {'dates': [], 'current_page': 0, 'max_page': 0, 'next_page': 0, 'prev_page': 0}
+
+            page = p.page(self.kwargs['page'])
+            data['current_page'] = page.number
+            data['max_page'] = p.num_pages
+
+            if page.has_next():
+                data['next_page'] = page.next_page_number()
+            else:
+                data['next_page'] = page.number
+
+            if page.has_previous():
+                data['prev_page'] = page.previous_page_number()
+            else:
+                data['prev_page'] = page.number
+
+            data['dates'] = page.object_list
+
+            return data
 
 
 class RatePage(generic.ListView):
@@ -24,30 +45,14 @@ class RatePage(generic.ListView):
     context_object_name = "rates"
 
     def get_queryset(self):
-        with sqlite3.connect("/root/.suka/python/parser/gold.db") as con:
+        with sqlite3.connect("gold.db") as con:
             cur = con.cursor()
-            rates = {"rates": [], "average_buy": "", "average_sell": ""}
+            rates = {"rate": "", "date": ""}
             date = self.kwargs["date"]
-            buy_sum = 0
-            sell_sum = 0
+            rates["date"] = date
             try:
-                for i in cur.execute(f'''SELECT * FROM "{date}"'''):
-                    rates["rates"].append(i)
-                    buy_sum += float(i[1].replace(" ", ""))
-                    sell_sum += float(i[2].replace(" ", ""))
+                r = cur.execute(f'''SELECT * FROM "{date}"''')
+                rates["rate"] = r.fetchone()[0]
             except sqlite3.OperationalError:
                 return None
-            x = str(round(buy_sum / 12, 2))
-            y = str(round(sell_sum / 12, 2))
-            if len(x[x.find(".")+1::]) == 1:
-                x += "0"
-            if len(y[y.find(".")+1::]) == 1:
-                y += "0"
-            if len(x[0:x.find(".")]) >= 4:
-                x = x[0:x.find(".")-3] + " " + x[x.find(".")-3::]
-            if len(y[0:y.find(".")]) >= 4:
-                y = y[0:y.find(".")-3] + " " + y[y.find(".")-3::]
-            rates["average_buy"] = str(x)
-            rates["average_sell"] = str(y)
             return rates
-        

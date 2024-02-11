@@ -17,10 +17,15 @@
 
 {% block main %}
   <h1>Gold Rates</h1>
-  <p class="lead">On this page you can see gold rates</p>
-  <p class="lead">All data received from PrivatBank</p>
+  <p class="lead">On this page you can see gold rates by date</p>
+  <p class="lead">All data received from National Bank of Ukraine</p>
+  <br>
   <p class="lead">
-    <a href="dates/" class="btn btn-lg btn-secondary fw-bold border-white bg-white">See gold rates</a>
+    <a href="{% url 'gold:dates' 1 %}" class="btn btn-lg btn-secondary fw-bold border-white bg-white">See gold rates</a>
+  </p>
+  <p>or you can subscribe on mailing in the telegram bot
+    (<a class="text-white-50" href="https://t.me/grb_alexis_bot" target="_blank">click!</a>)<br>
+    bot is currently unavailable :(
   </p>
 {% endblock main %}
 
