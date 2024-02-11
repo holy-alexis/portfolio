@@ -31,9 +31,11 @@ If you use PostgreSQL make sure to execute make.py, it would load "Towns" data f
 To start server<br>
 
 [WINDOWS]
+> python manage.py collectstatic<br>
 > python manage.py runserver
 
 [LINUX]
+> python3 manage.py collectstatic<br>
 > python3 manage.py runserver
 
 
