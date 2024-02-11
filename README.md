@@ -7,7 +7,7 @@ To start this site follow the steps below:
 Download:<br>
 >Python3<br>
 >Git CLI<br>
->PostgreSQL
+>PostgreSQL (optional)
 
 Open console and input next lines: <br>
 >git clone https://github.com/holy-alexis/portfolio <br>
