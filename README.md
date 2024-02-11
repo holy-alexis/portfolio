@@ -5,8 +5,8 @@ Site is working under Django framework for Python
 To start this site follow the steps below:
 
 Download:<br>
->Python3
->Git CLI
+>Python3<br>
+>Git CLI<br>
 >PostgreSQL
 
 Open console and input next lines: <br>
