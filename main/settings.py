@@ -19,6 +19,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
+MEDIA_URL = 'media/'
+
 
 # Application definition
 
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
     'main',
     'pc_info',
     'gold_rates',
+    'upscaler',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,9 +76,9 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'towns',
-        'USER': 'alexis',
-        'PASSWORD': 'qazwsx228',
+        'NAME': 'template1',
+        'USER': 'postgres',
+        'PASSWORD': '0112',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -124,4 +127,4 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_ROOT = "/static/"
+STATIC_ROOT = "static_root/"

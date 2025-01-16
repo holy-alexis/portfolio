@@ -9,6 +9,7 @@
       <a class="nav-link" href="{% url 'pc_info:index' %}">PC_Info</a>
       <a class="nav-link" href="{% url 'weather_bot:index' %}">Weather Bot</a>
       <a class="nav-link active" aria-current="page" href="{% url 'gold:index' %}">Gold Rates</a>
+      <a class="nav-link" href="{% url 'upscaler:index' %}">UpScaler</a>
       <a class="nav-link" href="{% url 'git' %}">GitHub</a>
       <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
     </nav>
@@ -19,11 +20,35 @@
   <br>
   <a class="text-white">Click on date below:</a>
   <br>
-  {% for date in dates %}
+  {% for date in data.dates %}
   <a href="{% url 'gold:date' date %}" class="text-white">{{ date }}</a><br>
   {% endfor %}
+  <br><br>
+
+<div class="wrapper">
+    <ul class="pagination">
+      <li class="page-item">
+        {% if data.current_page == 1 %}
+        <a class="btn fw-bold border-white bg-white disabled" href="{% url 'gold:dates' data.prev_page %}">Prev.</a>
+        {% else %}
+        <a class="btn fw-bold border-white bg-white" href="{% url 'gold:dates' data.prev_page %}">Prev.</a>
+        {% endif %}
+      </li>
+      <li class="page-item active" aria-current="page">
+        <span class="btn border-white bg-white text-dark">{{ data.current_page }}</span>
+      </li>
+      <li class="page-item">
+        {% if data.current_page == data.max_page %}
+        <a class="btn fw-bold border-white bg-white disabled" href="{% url 'gold:dates' data.next_page %}">Next</a>
+        {% else %}
+        <a class="btn fw-bold border-white bg-white" href="{% url 'gold:dates' data.next_page %}">Next</a>
+        {% endif %}
+      </li>
+    </ul>
+</div>
+
 {% endblock main %}
 
 {% block footer %}
-  <p>All data received from <a href="https://pb.ua" target="_blank" class="text-white">pb.ua</a></p>
+<p>All data received from <a href="https://bank.gov.ua" target="_blank" class="text-white">bank.gov.ua</a></p>
 {% endblock footer %}
