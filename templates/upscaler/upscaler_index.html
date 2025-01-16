@@ -1,15 +1,14 @@
 {% extends "base.html" %}
-
 {% block header %}
   <div>
-    <h3 class="float-md-start mb-0">Gold Rates</h3>
+    <h3 class="float-md-start mb-0">UpScaler</h3>
     <nav class="nav nav-masthead justify-content-center float-md-end">
       <a class="nav-link" href="{% url 'index' %}">Home</a>
       <a class="nav-link" href="{% url 'towns:index' %}">Towns</a>
       <a class="nav-link" href="{% url 'pc_info:index' %}">PC_Info</a>
       <a class="nav-link" href="{% url 'weather_bot:index' %}">Weather Bot</a>
-      <a class="nav-link active" aria-current="page" href="{% url 'gold:index' %}">Gold Rates</a>
-      <a class="nav-link" href="{% url 'upscaler:index' %}">UpScaler</a>
+      <a class="nav-link" href="{% url 'gold:index' %}">Gold Rates</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'upscaler:index' %}">UpScaler</a>
       <a class="nav-link" href="{% url 'git' %}">GitHub</a>
       <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
     </nav>
@@ -17,15 +16,14 @@
 {% endblock header %}
 
 {% block main %}
-  <br>
-  {% if rates %}
-    <p> Gold rate on {{ rates.date }}: </p>
-    <p>  {{ rates.rate }} UAH / 1 gr. </p>
-  {% else %}
-    <p>Data doesn't exist</p>
-  {% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.image }}
+    <br><br>
+    <button type="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Upload</button>
+</form>
 {% endblock main %}
 
 {% block footer %}
-  <p>All data received from <a href="https://bank.gov.ua" target="_blank" class="text-white">bank.gov.ua</a></p>
+<p>UpScale your image in 2x resolution!</p>
 {% endblock footer %}

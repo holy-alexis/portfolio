@@ -19,6 +19,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
+MEDIA_URL = 'media/'
+
 
 # Application definition
 
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
     'main',
     'pc_info',
     'gold_rates',
+    'upscaler',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'towns',
         'USER': 'postgres',
-        'PASSWORD': 'qazwsx228',
+        'PASSWORD': '0112',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
