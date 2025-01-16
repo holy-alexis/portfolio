@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'template1',
+        'NAME': 'towns',
         'USER': 'postgres',
         'PASSWORD': '0112',
         'HOST': '127.0.0.1',
@@ -127,4 +127,4 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_ROOT = "static_root/"
+STATIC_ROOT = "/staticsu/"
