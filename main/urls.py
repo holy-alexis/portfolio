@@ -13,5 +13,6 @@ urlpatterns = [
     path("towns/", include("towns.urls"), name="towns"),
     path("gold_rates/", include("gold_rates.urls"), name="gold_rates"),
     path("github/", views.GitPage.as_view(), name="git"),
+    path('upscaler/', include('upscaler.urls'), name='upscaler'),
     path('admin/', admin.site.urls, name="admin"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -9,6 +9,7 @@
       <a class="nav-link" href="{% url 'pc_info:index' %}">PC_Info</a>
       <a class="nav-link" href="{% url 'weather_bot:index' %}">Weather Bot</a>
       <a class="nav-link active" aria-current="page" href="{% url 'gold:index' %}">Gold Rates</a>
+      <a class="nav-link" href="{% url 'upscaler:index' %}">UpScaler</a>
       <a class="nav-link" href="{% url 'git' %}">GitHub</a>
       <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
     </nav>
@@ -18,32 +19,13 @@
 {% block main %}
   <br>
   {% if rates %}
-    <a>Average Purchase rate: {{ rates.average_buy }}</a>
-    <br>
-    <a>Average Selling rate: {{ rates.average_sell }}</a>
-    <table cellpadding="5" border="1">
-      <thead>
-        <tr>
-          <th>Ingot denomination, gram</th>
-          <th>Purchase rate, UAH / 1 gr.</th>
-          <th>Selling rate, UAH / 1 gr.</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for weight, buy, sell in rates.rates %}
-        <tr>
-          <td>{{ weight }}</td>
-          <td>{{ buy }}</td>
-          <td>{{ sell }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <p> Gold rate on {{ rates.date }}: </p>
+    <p>  {{ rates.rate }} UAH / 1 gr. </p>
   {% else %}
     <p>Data doesn't exist</p>
   {% endif %}
 {% endblock main %}
 
 {% block footer %}
-  <p>All data received from <a href="https://pb.ua" target="_blank" class="text-white">pb.ua</a></p>
+  <p>All data received from <a href="https://bank.gov.ua" target="_blank" class="text-white">bank.gov.ua</a></p>
 {% endblock footer %}
