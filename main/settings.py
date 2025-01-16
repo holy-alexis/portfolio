@@ -127,4 +127,4 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_ROOT = "/staticsu/"
+STATIC_ROOT = "/static/"
