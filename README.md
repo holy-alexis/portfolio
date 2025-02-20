@@ -1,49 +1,71 @@
-# holy_alexis site
+# Portfolio Project
 
-Site is working under Django framework for Python
+This project is a collection of random Django-based web applications. 
 
-To start this site follow the steps below:
+## Setup Guide
 
-Download:<br>
->Python3<br>
->Git CLI<br>
->PostgreSQL (optional)
+### Prerequisites
 
-Open console and input next lines: <br>
->git clone https://github.com/holy-alexis/portfolio <br>
->cd portfolio<br>
+- Python 3.x
+- Django
+- PostgreSQL
+- psycopg2 (PostgreSQL adapter for Python)
 
-[WINDOWS]
-> pip install -r requirements.txt<br>
+### Installation
 
-[LINUX]
-> pip3 install -r requirements.txt<br>
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/portfolio.git
+    cd portfolio
+    ```
 
-In folder "main" in file "setting.py" make sure that user password host port of variable DATABASES set to yours PostgreSQL properties
-(you can use site without it, just comment full variable DATABASES, but page "Towns" won't work properly)<br><br>
-Create database through PostgreSQL console using commang
->CREATE DATABASE towns WITH OWNER postgres ENCODING 'utf-8';<br>
+2. Install the required packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Note: change "postgres" to your username to PostgreSQL
-<br><br><br>
-If you use PostgreSQL make sure to execute make.py, it would load "Towns" data from folder dumps
-<br><br><br>
-To start server<br>
+### Database Setup
 
-[WINDOWS]
-> python manage.py collectstatic<br>
-> python manage.py runserver
+1. Create a PostgreSQL database named `towns`:
+    ```sql
+    CREATE DATABASE towns WITH OWNER postgres ENCODING 'utf-8';
+    ```
 
-[LINUX]
-> python3 manage.py collectstatic<br>
-> python3 manage.py runserver
+2. Update the `settings.py` file to configure the database connection:
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'towns',
+            'USER': 'your_db_user',
+            'PASSWORD': 'your_db_password',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+    ```
 
+### Load Initial Data
 
-To access "Admin" page you can use django superuser login & pass<br>
-Just create one using<br>
+1. Load the initial data for the `Towns` app using `make.py`:
+    ```bash
+    python make.py
+    ```
 
-[WINDOWS]
-> python manage.py createsuperuser
+### Create a Superuser
 
-[LINUX]
-> python3 manage.py createsuperuser
+1. Create a superuser to access the Django admin interface:
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+2. Follow the prompts to set up the superuser account.
+
+## Running the Application
+
+1. Start the development server:
+    ```bash
+    python manage.py runserver
+    ```
+
+2. Open your web browser and navigate to `http://127.0.0.1:8000/` to view the application.
