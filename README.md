@@ -15,7 +15,7 @@ This project is a collection of random Django-based web applications.
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/portfolio.git
+    git clone https://github.com/holy-alexis/portfolio
     cd portfolio
     ```
 
